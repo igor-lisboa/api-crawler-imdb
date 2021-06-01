@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import cheerio, { CheerioAPI } from 'cheerio';
 
 // load dotenv variables
 dotenv.config();
@@ -14,8 +15,14 @@ app.get(`/`, async (req, res) => {
 
     let urlNextPage: string | undefined = `/search/title/?groups=top_1000`;
 
-    const response = await axios.get(`${baseUrl}${urlNextPage}`);
-    console.log(response.data);
+    // walk through pages
+    while (urlNextPage !== undefined) {
+        const response: AxiosResponse<any> = await axios.get(`${baseUrl}${urlNextPage}`);
+        const $: CheerioAPI = cheerio.load(response.data);
+        urlNextPage = $(`.lister-page-next.next-page`).first().attr(`href`);
+        console.log(urlNextPage);
+    }
+
 
     return res.json({ itIsWorking: "uhul" });
 });
