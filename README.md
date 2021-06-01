@@ -10,6 +10,7 @@ API to get data from IMDB website
 2. Then, you need to install this project dependencies, running the follow command: `npm install`.
 3. After that you can configure 2 things in your enviroment... The *PORT* that will be used and how much minutes the Cache will avoid to go to IMDB website scrap the titles.
     * You can copy the `.env.example` file executing `cp .env.example .env` and edit what you want.
+4. In the last but not least... Run `npm start` to start the api, then you can open your browser or POSTMAN and make some requests.
 
 ## The endpoint
 
