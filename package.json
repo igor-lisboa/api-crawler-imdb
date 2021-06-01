@@ -1,6 +1,9 @@
 {
   "name": "api-crawler-imdb",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.18.4"
+  },
   "description": "This project is a simple API REST that can let you filter the top 1000 titles of IMDB",
   "main": "index.ts",
   "scripts": {
