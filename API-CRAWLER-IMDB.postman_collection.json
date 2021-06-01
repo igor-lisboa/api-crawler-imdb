@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "e235221b-bb50-40ba-8dc7-19d7a075b51e",
+		"name": "API-CRAWLER-IMDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Titles from top 1000 IMDB movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_CRAWLER_IMDB}}?q=spielberg hanks&pluck=1&cache=1",
+					"host": [
+						"{{API_CRAWLER_IMDB}}"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "spielberg hanks",
+							"description": "This field receive the text that you want to search"
+						},
+						{
+							"key": "pluck",
+							"value": "1",
+							"description": "If pluck is equal 0 all the title data will return"
+						},
+						{
+							"key": "cache",
+							"value": "1",
+							"description": "If cache is equal 0, the cache will not be used"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

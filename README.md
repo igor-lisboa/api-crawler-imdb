@@ -1,69 +1,20 @@
 # api-crawler-imdb
 API to get data from IMDB website
 
-## Problem Statement
-Build search for the top 1000 IMDB movies. Users should be able to search for different aspects of the movie (e.g. director name) and get back the set of movies related to it. For instance, in our implementation:
+* You can check the documentation on this link: https://documenter.getpostman.com/view/15046943/TzY1hGUV.
+    * Or you can import the postman_collection on your [Postman](https://www.postman.com/) and make a few requests.
 
-Searching for “spielberg” returned the following list:
+## How to use this api
+1. First you should check if you have node installed
+    * you can check running this command `node --version`, if it returns something like this `v12.18.4` it's ok, if it throws some error, check what is wrong with [node](https://nodejs.org/en/).
+2. Then, you need to install this project dependencies, running the follow command: `npm install`.
+3. After that you can configure 2 things in your enviroment... The *PORT* that will be used and how much minutes the Cache will avoid to go to IMDB website scrap the titles.
+    * You can copy the `.env.example` file executing `cp .env.example .env` and edit what you want.
 
-```javascript
-[ "Schindler's List",
-"Saving Private Ryan",
-"Raiders of the Lost Ark",
-"Indiana Jones and the Last Crusade",
-"Jurassic Park",
-"Catch Me If You Can",
-"Jaws",
-"E.T. the ExtraTerrestrial",
-"Empire of the Sun",
-"The Color Purple",
-"Minority Report",
-"Close Encounters of the Third Kind",
-"Bridge of Spies",
-"Indiana Jones and the Temple of Doom",
-"Munich"]
-```
-Searching for "spielberg hanks" returns:
+## The endpoint
 
-```javascript
-[ "Saving Private Ryan",
-"Catch Me If You Can",
-"Bridge of Spies"]
-```
-
-This is the list of all movies associated with both Spielberg and Hanks.
-
-## Components
-
-You can use the language of your choice.
-
-1. Crawl: You will need to crawl the IMDB listing pages (there are multiple pages) and all the movies linked off of the listing pages.
-2. Parse: You will need to parse the pages to extract the right information.
-3. Search database: “Index” the information in some way. Given the scale of the problem is not large, you can use a simple in-memory data structure. Please implement it, rather than leveraging external tools for this purpose.
-4. Expose a simple API that returns the movie names given a search term.
-
-## Non Goals
-
-This is a very open-ended problem. The goal is not to build a comprehensive solution. Feel free to take decisions on the scope of what you want to accomplish. You can take as much or as little time on the exercise but my recommendation would be spending 2-3 hours at the most.
-
-Some decision you can make on the scope:
-
-* Relevance and ranking are not in scope.
-* Your data structure should be optimized for lookup time (take into account the number of lookups). But you don't have to worry about memory scale at this point.
-* There is no UX needed. A simple API would do.
-* Feel free to make your own decisions on the scope.
-
-## Helpful tips
-
-* Most languages provide libraries for extracting information from web pages using CSS selectors (e.g BeautifulSoupfor python)
-* Chrome provides you the ability to look at the CSS selector for a given element on the page
-* Important: Have Fun!!
-
-## Deliverables
-
-* Code for this exercise along with instructions on how to run it (if possible, check in the code to github with a README).
-* Thoughts on some simplifying assumptions you made and why.
-* Some thoughts on If you had more time, how you would improve the solution from the perspective of
-software architecture, scale, performance or quality.
-
-Please send any questions/clarification and the solution to us
+This API only have one endpoint `/` and you can use some query params to filter the titles or decide if the cache will be used or choose if will want to see every data of each title.
+* The query params are:
+    * q => This field receive the text that you want to search.
+    * pluck => If pluck is equal 0 all the title data will return.
+    * cache => If cache is equal 0, the cache will not be used.
